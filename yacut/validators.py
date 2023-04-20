@@ -21,7 +21,7 @@ def is_custom_id_received(data: dict) -> bool:
 
 def check_short_id_length(short_id: str):
     """Вызывает исключение, если идентификатор недопустимой длины."""
-    if len(short_id) < 0 or len(short_id) > MAX_CUSTOM_ID_LENGTH:
+    if len(short_id) > MAX_CUSTOM_ID_LENGTH:
         raise InvalidAPIUsage(
             'Указано недопустимое имя для короткой ссылки')
 
