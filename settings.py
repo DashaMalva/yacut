@@ -3,6 +3,7 @@ from string import ascii_letters, digits
 
 
 ALLOWED_CHARACTERS = ascii_letters + digits
+CUSTOM_ID_PATTERN = r'^[A-Za-z0-9]+$'
 DEFAULT_SHORT_ID_LENGTH = 6
 MAX_CUSTOM_ID_LENGTH = 16
 MAX_ORIGINAL_LINK_LENGHT = 256

@@ -1,6 +1,6 @@
 from urllib.parse import urljoin
 
-from flask import abort, flash, redirect, render_template, request
+from flask import flash, redirect, render_template, request
 
 from . import app, db
 from .forms import URLMapForm
@@ -34,7 +34,5 @@ def index_view():
 @app.route('/<short_id>', methods=['GET'])
 def redirect_view(short_id):
     """Переадресует на исходный адрес при обращении к коротким ссылкам."""
-    urlmap = URLMap.query.filter_by(short=short_id).first()
-    if urlmap is None:
-        abort(404)
+    urlmap = URLMap.query.filter_by(short=short_id).first_or_404()
     return redirect(urlmap.original)

@@ -1,4 +1,6 @@
-from settings import ALLOWED_CHARACTERS, MAX_CUSTOM_ID_LENGTH
+import re
+
+from settings import CUSTOM_ID_PATTERN, MAX_CUSTOM_ID_LENGTH
 from .error_handlers import InvalidAPIUsage
 from .utils import is_unique_short_id
 
@@ -28,10 +30,9 @@ def check_short_id_length(short_id: str):
 
 def check_short_id_characters(short_id: str):
     """Вызывает исключение, если в идентификаторе есть недопустимые символы."""
-    for character in short_id:
-        if character not in ALLOWED_CHARACTERS:
-            raise InvalidAPIUsage(
-                'Указано недопустимое имя для короткой ссылки')
+    if re.fullmatch(CUSTOM_ID_PATTERN, short_id) is None:
+        raise InvalidAPIUsage(
+            'Указано недопустимое имя для короткой ссылки')
 
 
 def check_short_id_uniqueness(short_id: str):
