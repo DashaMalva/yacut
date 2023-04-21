@@ -1,12 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<main>
-  <section class="container my-5 px-4">
-    <h1 class="text-center">Страница не найдена!</h1>
-    <h4 class="text-center my-4">
-      Проверьте правильность ссылки или сгенерируйте <a href="{{ url_for('index_view') }}">новую</a>
-    </h4>
-
-  </section>
-</main>
+<section class="container my-5 px-4">
+  <h1 class="text-center">Страница не найдена!</h1>
+  <h4 class="text-center my-4">
+    Проверьте правильность ссылки или сгенерируйте <a href="{{ url_for('index_view') }}">новую</a>
+  </h4>
+</section>
 {% endblock content %}
